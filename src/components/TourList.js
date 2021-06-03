@@ -1,9 +1,10 @@
 import { React, useState } from "react";
-
-const TourList = ({id, image, price, info, name}) =>{
+import Tour from "./Tour.js";
+const TourList = ({id, image, price, info, name, removeTour}) =>{
     const [show, setShow] = useState(false)
+    const [interested , setInterested] = useState(true)
     return(
-        <article>
+        <article style={{visibility: interested? 'visible' : 'hidden'}}>
             <img src={image} alt=''></img>
             <footer>
                 <div>
@@ -16,7 +17,7 @@ const TourList = ({id, image, price, info, name}) =>{
                     </p>
                     
             </footer>
-            <button>Not interested</button>
+            <button onClick={() => {removeTour(id)}}>Not interested</button>
         </article>
 
     )
